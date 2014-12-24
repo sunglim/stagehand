@@ -41,5 +41,7 @@ curl http://storage.googleapis.com/dart-archive/channels/stable/release/latest/d
 unzip $DART_CONTENT_SHELL > /dev/null
 rm $DART_CONTENT_SHELL
 
+run_tests --content-shell-bin ./drt-lucid64-full-stable-42039.0/content_shell test/all_test.dart
+
 # Run all the generators and analyze the generated code.
 grind test
