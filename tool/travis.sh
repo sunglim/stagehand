@@ -20,6 +20,7 @@ dart --version
 
 # Globally install grinder.
 pub global activate grinder
+pub global activate test_runner
 export PATH=~/.pub-cache/bin:$PATH
 
 # Get our packages.
@@ -29,10 +30,16 @@ pub get
 dartanalyzer --fatal-warnings \
   bin/stagehand.dart \
   lib/stagehand.dart \
-  test/all.dart
+  test/all_test.dart
 
 # Run the tests.
-dart test/all.dart
+dart test/all_test.dart
+
+# Get the Dart SDK.
+DART_CONTENT_SHELL=content_shell-linux-x64-release.zip
+curl http://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/content_shell-linux-x64-release.zip > $DART_CONTENT_SHELL
+unzip $DART_CONTENT_SHELL > /dev/null
+rm $DART_CONTENT_SHELL
 
 # Run all the generators and analyze the generated code.
 grind test

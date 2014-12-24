@@ -293,6 +293,7 @@ class CliApp {
 
     return dir.listSync(followLinks: false)
         .where((entity) => entity is io.Directory)
+        .where((entity) => entity.path != 'test/__test_runner')
         .where((entity) => !isHiddenDir(entity))
         .isEmpty;
   }
